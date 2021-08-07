@@ -9,10 +9,10 @@ const {cakes, advantages} = Astro.props;
     cakes.map((cake, i) => {
         return (
             <div data-sal="slide-up" class={i === 2 ? 'cake featured-cake' : 'cake'} style={i===2?`--order:${1}`:`--order:${(i+1)/2}`}>
-            <img src={cake.src} alt={cake.name}/>
+            <img src={cake?.src} alt={cake?.name}/>
             <div style="width: 100%;padding: 10px;">
-                <h2 class="cake--name">{cake.name}</h2>
-                <span><strong>{cake.price}</strong></span>
+                <h2 class="cake--name">{cake?.name}</h2>
+                <span><strong>{cake?.price}</strong></span>
             </div>
             </div>
         )
@@ -25,10 +25,10 @@ const {cakes, advantages} = Astro.props;
     {
         advantages.map((advantage, i) => (
             <div class="content" data-sal={i===1?'slide-down':'slide-up'}>
-                <img class="content--img" style={i===1?"max-width: 300px;":""} src={advantage.src} alt={advantage.title}/>
+                <img class="content--img" style={i===1?"max-width: 300px;":""} src={advantage?.src} alt={advantage.title}/>
                 <div>
-                    <h4 style="font-size: clamp(1rem, calc( 12px + 3.300vw ), 1.2rem);">{advantage.title}</h4>
-                    <p>{advantage.subtitle}</p>
+                    <h4 style="font-size: clamp(1rem, calc( 12px + 3.300vw ), 1.2rem);">{advantage?.title}</h4>
+                    <p>{advantage?.subtitle}</p>
                 </div>
             </div>
         ))

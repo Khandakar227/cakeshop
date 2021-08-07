@@ -6,7 +6,8 @@ import Home from './Home.astro';
 import Catalog from './Catalog.astro';
 import Order from './Order.astro';
 import Footer from './Footer.astro';
-const title = Data[0].title;
+
+const {title,home,order,delivery_terms, logo,cakes, advantages} = Data[0];
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -33,11 +34,11 @@ const title = Data[0].title;
 </head>
 <body>
     <main>
-        <Nav brand={title} logo={Data[0].logo} />
-        <Home home={Data[0].home}/>
-        <Catalog cakes={Data[0].cakes} advantages={Data[0].advantages} />
-        <Order order={Data[0].order} terms={Data[0].delivery_terms}/>
-        <Footer contactNum={Data[0].order.contact_num} title={title} logo={Data[0].logo}/>
+        <Nav brand={title} logo={logo} />
+        <Home home={home}/>
+        <Catalog cakes={cakes} advantages={advantages} />
+        <Order order={order} terms={delivery_terms}/>
+        <Footer contactNum={order.contact_num} title={title} logo={logo}/>
         <!--
            - You can also use imported framework components directly in your markup!
            -
@@ -51,7 +52,7 @@ const title = Data[0].title;
     <script>
     const elements = document.querySelectorAll('[data-sal]');
 
-    const options = {rootMargin: '0px', threshold: .5}
+    const options = {rootMargin: '0px', threshold: .3}
     const ObserveElements = (entries, observer) => {
         entries.forEach(entry => {
         if(entry.target.dataset?.sal) {

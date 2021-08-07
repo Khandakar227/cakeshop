@@ -7,27 +7,27 @@ const {order, terms} = Astro.props
 <img src="./assets/order/order_content.webp" alt="Image" />
 </div>
 <div class="form-wrapper">
-<h2 class="heading">{order.head}</h2>
-<p class="form--text">{order.desc}</p>
+<h2 class="heading">{order?.head}</h2>
+<p class="form--text">{order?.desc}</p>
 {
-    order.inputs.map((Input) => (
+    order?.inputs.map((Input) => (
         <textfield>
-            <input type={Input.type} placeholder={Input.placeholder}>
+            <input type={Input?.type} placeholder={Input?.placeholder}>
         </textfield>
     ))
 }
 <button data-color="red" style="margin: 1rem;" class="button"> OK </button>
-<p class="contact-num">{order.contact_content} &nbsp; <strong>{order.contact_num}</strong> </p>
+<p class="contact-num">{order?.contact_content} &nbsp; <strong>{order?.contact_num}</strong> </p>
 </div>
 </section>
 
 <section class="delivery-terms">
     <div>
-    <h2 class="heading" style="padding-bottom: 1rem;" data-sal="slide-left">{terms.head}</h2>
+    <h2 class="heading" style="padding-bottom: 1rem;" data-sal="slide-left">{terms?.head}</h2>
     <article data-sal="slide-right">
     <ul>
         {
-         terms.terms.map(term => (
+         terms?.terms.map(term => (
             <div>
             <li> {term}</li>
             <br/>
