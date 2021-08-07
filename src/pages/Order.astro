@@ -1,0 +1,170 @@
+---
+const {order, terms} = Astro.props
+---
+
+<section class="order">
+<div class="order-img-wrapper">
+<img src="./assets/order/order_content.webp" alt="Image" />
+</div>
+<div class="form-wrapper">
+<h2 class="heading">{order.head}</h2>
+<p class="form--text">{order.desc}</p>
+{
+    order.inputs.map((Input) => (
+        <textfield>
+            <input type={Input.type} placeholder={Input.placeholder}>
+        </textfield>
+    ))
+}
+<button data-color="red" style="margin: 1rem;" class="button"> OK </button>
+<p class="contact-num">{order.contact_content} &nbsp; <strong>{order.contact_num}</strong> </p>
+</div>
+</section>
+
+<section class="delivery-terms">
+    <div>
+    <h2 class="heading" style="padding-bottom: 1rem;" data-sal="slide-left">{terms.head}</h2>
+    <article data-sal="slide-right">
+    <ul>
+        {
+         terms.terms.map(term => (
+            <div>
+            <li> {term}</li>
+            <br/>
+            </div>
+            ))
+        }
+    </ul> 
+    </article>
+    </div>
+    <div class="img">
+        <img src="./assets/order/delivery_terms.webp" alt="Delivery tems image">
+    </div>
+</section>
+
+<style>
+.delivery-terms {
+    display: grid;
+    grid-template-columns: 50% auto;
+    align-items: center;
+    padding: 4vw 0;
+}
+
+.delivery-terms .img {position: relative;}
+.delivery-terms .img::after {
+    --light-gradiant: rgb(255 255 255 / 15%);
+    --light-bg: #fff;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background: linear-gradient(-90deg, var(--light-gradiant) 70%,var(--light-bg) 100%),linear-gradient(
+-180deg, var(--light-gradiant) 70%,var(--light-bg) 100%);
+}
+.order {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: auto 50%;
+    max-width: 1500px;
+    gap: 4vw;
+    margin: 1vw auto;padding: 4vw 0;
+}
+.order-img-wrapper {
+    position: relative;
+    max-width: 500px;
+    text-align: center;
+}
+.order-img-wrapper::after {
+    --light-gradiant: rgb(255 255 255 / 0%);
+    --light-bg: #fff;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background: linear-gradient(to bottom, var(--light-gradiant) 70%,var(--light-bg) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f4b', endColorstr='#00000000',GradientType=0 );
+}
+.contact-num {
+    padding-top: 1.5rem;
+    font-size: 1.3rem;
+}
+.form--text {
+    padding: 1rem 0rem;
+    font-size: clamp(1.035rem, calc( 12px + 0.540vw ), 1.125rem);
+}
+textfield {
+    padding: 1rem;
+}
+textfield input {
+    padding: .7rem;
+    width: 100%;
+    border-radius: 1pc;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    background: #ffcaca9e;
+    box-shadow: 1px 1px 4px 0px lightslategrey;
+}
+textfield input:focus {
+    box-shadow: inset 1px 1px 4px 0px lightslategrey;
+}
+textfield input::placeholder {
+    font-family: system-ui, serif;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.form-wrapper {
+    display: grid;
+}
+.delivery-terms article{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 5px;
+    font-size: clamp(1rem, calc( 12px + .6vw ), 1.25rem);
+    max-width: 590px;
+    margin: 0 auto;
+}
+
+ul li {list-style: none; text-indent: -20px;}
+ul li::before {content: "—";}
+@media (max-width: 780px) {
+    .order {
+        display: block;
+        text-align: center;
+    }
+.order-img-wrapper {
+    display: none;
+}
+.delivery-terms div {padding: 1rem 0;}
+.delivery-terms {
+    grid-template-columns: auto;
+}
+.delivery-terms .img::after {
+     --light-gradiant: rgb(255 255 255 / 35%);
+    --light-bg: #fff;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background: linear-gradient( 
+-180deg
+, var(--light-gradiant) 50%,var(--light-bg) 100%);
+}
+}
+</style>

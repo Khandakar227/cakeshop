@@ -1,0 +1,128 @@
+---
+const {cakes, advantages} = Astro.props;
+---
+
+<section class=".catalog">
+<h2 class="heading" data-sal="slide-up" style="--order: 1.5;">Catalog</h2>
+<div class="featured-cakes">
+{
+    cakes.map((cake, i) => {
+        return (
+            <div data-sal="slide-up" class={i === 2 ? 'cake featured-cake' : 'cake'} style={i===2?`--order:${1}`:`--order:${(i+1)/2}`}>
+            <img src={cake.src} alt={cake.name}/>
+            <div style="width: 100%;padding: 10px;">
+                <h2 class="cake--name">{cake.name}</h2>
+                <span><strong>{cake.price}</strong></span>
+            </div>
+            </div>
+        )
+    })
+}
+</div>
+<div class="advantages">
+<h2> Our advantages</h2>
+<div class="advantages--container">
+    {
+        advantages.map((advantage, i) => (
+            <div class="content" data-sal={i===1?'slide-down':'slide-up'}>
+                <img class="content--img" style={i===1?"max-width: 300px;":""} src={advantage.src} alt={advantage.title}/>
+                <div>
+                    <h4 style="font-size: clamp(1rem, calc( 12px + 3.300vw ), 1.2rem);">{advantage.title}</h4>
+                    <p>{advantage.subtitle}</p>
+                </div>
+            </div>
+        ))
+    }
+</div>
+</div>
+</section>
+
+<style>
+.advantages {padding-bottom: 1rem;}
+.content {
+    display: grid;
+    justify-content: space-between;
+    gap: 4vw;
+    grid-template-columns: auto 65%;
+    padding: 5px;
+}
+.content p {
+    font-size: clamp(.9rem, calc(12px + 3vw), 1rem);
+}
+.content .content--img {
+    border-radius: 50%;
+    max-width: 260px;
+    aspect-ratio: 1;
+}
+.advantages--container {
+    display: grid;
+    justify-content: center;
+    align-items: baseline;
+    gap: 25px;
+    padding: 0 0 1.5rem 0;
+    max-width: 1500px;
+    margin: 1vw auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.advantages--container h4 {
+    padding: 1rem 0rem;
+}
+.featured-cakes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    justify-content: space-evenly;
+    gap: 2vw;;
+    align-items: center;
+    margin: 1vw auto;
+
+}
+.cake {
+    box-shadow: 1px 1px 1px 1px #d0cdcd82;
+    border-radius: 5px;
+    padding: 0 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease-out;
+}
+.cake:hover {
+    background: #ff838ac7;
+    filter: brightness(1.2);
+}
+.cake img {
+    width: 100%;
+    aspect-ratio: 5/4;
+}
+.cake--name {
+    padding: 2% 0;
+    font-family: ui-sans-serif;
+    font-size: clamp(1.125rem, calc( 12px + 0.900vw ), 1.350rem);
+}
+.advantages h2 {
+    text-align: center;
+    font-size: clamp(2rem, calc( 12px + 3.300vw ), 4rem);
+    font-family: 'Charmonman';
+    padding: 1.5rem 0rem;
+}
+@media (max-width: 400px) {
+    .featured-cakes {
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    }
+}
+@media (min-width: 780px) {
+    .featured-cakes {
+        grid-template-columns: 25% 25% 25% 20%;
+        gap: 1%;
+        max-width: 1500px;
+    }
+    .featured-cake {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .featured-cake img {
+        aspect-ratio: auto;
+    }
+    .content {text-align: center; display: block;}
+}
+</style>

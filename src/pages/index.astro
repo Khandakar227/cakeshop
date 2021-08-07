@@ -1,0 +1,73 @@
+---
+// Component Imports
+import Data from '../components/data.json';
+import Nav from '../components/Nav.astro';
+import Home from './Home.astro';
+import Catalog from './Catalog.astro';
+import Order from './Order.astro';
+import Footer from './Footer.astro';
+const title = Data[0].title;
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Charmonman:wght@700&family=Cormorant+Infant:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style/home.css">
+    <link rel="stylesheet" href="/style/global.css">
+    <style>
+        header {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            max-width: min(100%, 68ch);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <Nav brand={title} logo={Data[0].logo} />
+        <Home home={Data[0].home}/>
+        <Catalog cakes={Data[0].cakes} advantages={Data[0].advantages} />
+        <Order order={Data[0].order} terms={Data[0].delivery_terms}/>
+        <Footer contactNum={Data[0].order.contact_num} title={title} logo={Data[0].logo}/>
+        <!--
+           - You can also use imported framework components directly in your markup!
+           -
+           - Note: by default, these components are NOT interactive on the client.
+           - The `:visible` directive tells Astro to make it interactive.
+           -
+           - See https://docs.astro.build/core-concepts/component-hydration/ 
+           -->
+
+    </main>
+    <script>
+    const elements = document.querySelectorAll('[data-sal]');
+
+    const options = {rootMargin: '0px', threshold: .5}
+    const ObserveElements = (entries, observer) => {
+        entries.forEach(entry => {
+        if(entry.target.dataset?.sal) {
+            if(entry.isIntersecting) {
+                entry.target.className += ` ${entry.target.dataset?.sal}`
+            }
+        }
+        })
+    }
+
+    if(!!window.IntersectionObserver){
+        const observer = new IntersectionObserver(ObserveElements, options);
+        elements.forEach(element => {
+            observer.observe(element)
+        });
+    }
+    </script>
+</body>
+</html>

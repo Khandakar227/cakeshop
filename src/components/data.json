@@ -1,0 +1,83 @@
+[
+  {
+    "title": "CakeShop",
+    "logo": "/favicon.svg",
+    "home": {
+      "head": "Confectionary & Bakery Shop",
+      "subhead": "The perfect cake every time!",
+      "desc": "We are a company dedicated to prepare cakes,<br/> providing our customers products fresh from the oven.",
+      "carousel_images": [
+        {"src": "/assets/home/cake_home_2.webp"},
+        {"src": "/assets/home/cake_home.webp"},
+        {"src": "/assets/home/cake_home_1.webp"},
+        {"src": "/assets/home/cake_home_3.webp"},
+        {"src": "/assets/home/cake_home_4.webp"}
+    ]
+    },
+    "order":{
+      "head": "How to order",
+      "desc": "Please leave your contact information and we will get back to you within a few minutes.",
+      "inputs": [
+        {"type":"email", "placeholder":"Email"},{"type":"number", "placeholder":"Phone No."}
+      ],
+      "contact_content": "Or contact us:",
+      "contact_num": "01x-xxx-xxxxx"
+    },
+    "delivery_terms": {
+      "head":"Delivery terms",
+      "terms": [" We use the speediest delivery methods to ensure your goodies arrive in perfect condition to be devoured",
+        " Please allow between 2-3 working days from placing your order",
+        " All of our celebration cakes will be delivered to you on your chosen delivery date",
+        " Cakes can be stored in the freeze for 5 days and up to two days in the freezer"]
+    },
+    "cakes": [
+      {
+        "name": "Dark chocolate cake",
+        "src": "/assets/home/cake_home_1.webp",
+        "category": "Popular cake",
+        "price": "220 Tk"
+      },
+      {
+        "name": "Caramel cake",
+        "src": "/assets/home/cake_home_2.webp",
+        "category": "Celebration cake",
+        "price": "480 Tk"
+      },
+      {
+        "name": "Vanila cookie cake",
+        "src": "/assets/home/cake_home.webp",
+        "category": "Special cake",
+        "price": "680 Tk"
+      },
+      {
+        "name": "Sprinkle cake",
+        "src": "/assets/home/cake_home_3.webp",
+        "category": "Special cake",
+        "price": "500 Tk"
+      },
+      {
+        "name": "Chocolate cream cake",
+        "src": "/assets/home/cake_home_4.webp",
+        "category": "Wedding cake",
+        "price": "700 Tk"
+      }
+    ],
+    "advantages": [
+      {
+        "title": "High quality",
+        "subtitle": "Handmade cakes & natural ingridients",
+        "src": "/assets/catalog/high_quality_ingridients.webp"
+      },
+      {
+        "title": "Sweet gifts",
+        "subtitle": "Delicious macaron gift box for each clients",
+        "src": "/assets/catalog/special_gift.webp"
+      },
+      {
+        "title": "Fast delivery",
+        "subtitle": "Same day delivery in Chittagong",
+        "src": "/assets/catalog/fast_delivery.webp"
+      }
+    ]
+  }
+]

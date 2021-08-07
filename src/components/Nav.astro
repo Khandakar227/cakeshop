@@ -1,0 +1,77 @@
+---
+const {brand, logo} = Astro.props;
+const nav_items = ['Home', 'Catalog', 'About', 'Contact'];
+
+---
+
+<nav>
+    <h1 class="nav--brand"> <img style="max-width: 50px;" src={logo} alt="Logo"> {brand}</h1>
+    <div class="nav--container">
+        <div class="nav--icon"><button>☰</button></div>
+        <ul class="nav--items">
+            {nav_items.map(item => (
+                <li><button class="transparent--button">{item}</button></li>
+            ))}
+        </ul>
+    </div>
+</nav>
+
+<style>
+nav {display: flex; align-items: center; flex: auto; padding: 1rem 0 0 0;}
+nav h1 {align-items: center;display: flex;gap: 5px;font-size: 22px;}
+.nav--brand {padding: 0rem 4vw;font-variant: petite-caps; flex: 0.8;}
+.nav--items {display: flex; gap: 4vw; text-decoration: none; list-style: none;}
+.nav--items li {line-height: 2 ;position: relative;transition: all .5s ease; font-weight: 400;}
+.nav--items li::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 2pc;
+    background: #bc313a;
+    height: 2px;
+    width: 0%;
+    transition: width .5s ease-in;
+}
+.nav--items li:hover::after,.nav--items li:focus::after{
+    width: 80%;
+}
+.nav--icon {
+    display: none;
+    }
+.nav--icon button{
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    }
+.nav--icon button:focus {
+    background: #f54e4e17;
+    border-radius: 5px;
+}
+.nav--container:focus-within .nav--items {
+    opacity: 1; visibility: visible;transform: translateY(0);
+}
+@media (max-width: 512px) {
+    .nav--icon {
+        cursor: pointer;
+        display: block;
+    }
+    .nav--brand {flex: .95;}
+    .nav--items {
+    z-index: 1;
+    display: grid;
+    position: absolute;
+    padding: 1rem 3rem;
+    right: 0;
+    top: 60px;
+    box-shadow: 1px 1px 4px 2px #ecececbf;
+    border-radius: 10px;
+    transition: all 0.5s ease-out;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100%);
+    background: #ffd6d669;
+    backdrop-filter: blur(10px);
+    }
+}
+</style>
